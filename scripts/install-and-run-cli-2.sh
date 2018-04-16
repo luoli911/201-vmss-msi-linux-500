@@ -77,7 +77,7 @@ sudo mkdir /mnt/azurefiles/$today/Scenario1-500/$machineName$currenttime
 
 function loadTest()
 {
-ACR_NAME="NewACRLoadTestBuildCR500"
+ACR_NAME="ACRLoadTestBuildCR500eus2euap"
 sudo git clone https://github.com/SteveLasker/node-helloworld.git
 cd node-helloworld
 echo "+ az login -u azcrci@microsoft.com -p $password"
@@ -89,8 +89,8 @@ az account set --subscription "c451bd61-44a6-4b44-890c-ef4c903b7b12"
 echo "+ az extension remove -n acrbuildext"
 az extension remove -n acrbuildext
 
-echo  "+ az extension add --source https://acrbuild.blob.core.windows.net/cli/acrbuildext-0.0.2-py2.py3-none-any.whl -y"
-az extension add --source https://acrbuild.blob.core.windows.net/cli/acrbuildext-0.0.2-py2.py3-none-any.whl -y
+echo  "+ az extension add --source https://acrbuild.blob.core.windows.net/cli/acrbuildext-0.0.4-py2.py3-none-any.whl -y"
+az extension add --source https://acrbuild.blob.core.windows.net/cli/acrbuildext-0.0.4-py2.py3-none-any.whl -y
 
 echo "+ az acr login -n $ACR_NAME"
 az acr login -n $ACR_NAME
@@ -98,7 +98,7 @@ az acr login -n $ACR_NAME
 echo "---ACR Build Test---"
 pullbegin=$(date +%s%3N)
 PullStartTime=$(date +%H:%M:%S)
-for i in {1..100} 
+for i in {1..1} 
   do    
    echo "+ az acr build -t helloworld$i:v1 --context . -r $ACR_NAME"
    az acr build -t helloworld$i:v1 --context . -r $ACR_NAME 
