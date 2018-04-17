@@ -13,8 +13,7 @@ while getopts ":i:a:c:r:p:" opt; do
     ;;
     p) password="$OPTARG"
     ;;
-
-t) script_file="$OPTARG"
+    t) script_file="$OPTARG"
     ;;
     \?) echo "Invalid option -$OPTARG" >&2
     ;;
@@ -77,7 +76,7 @@ sudo mkdir /mnt/azurefiles/$today/Scenario1-500/$machineName$currenttime
 
 function loadTest()
 {
-ACR_NAME="ACRLoadTestBuildCR500eus2euap"
+ACR_NAME="ACRLoadTestBuildCR500eus2euap2"
 sudo git clone https://github.com/SteveLasker/node-helloworld.git
 cd node-helloworld
 echo "+ az login -u azcrci@microsoft.com -p $password"
@@ -98,7 +97,7 @@ az acr login -n $ACR_NAME
 echo "---ACR Build Test---"
 pullbegin=$(date +%s%3N)
 PullStartTime=$(date +%H:%M:%S)
-for i in {1..100} 
+for i in {1..1} 
   do    
    echo "+ az acr build -t helloworld$i:v1 --context . -r $ACR_NAME"
    az acr build -t helloworld$i:v1 --context . -r $ACR_NAME 
