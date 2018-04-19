@@ -100,7 +100,7 @@ PullStartTime=$(date +%H:%M:%S)
 for i in {1..100} 
   do    
    echo "+ az acr build -t helloworld$i:v1  -f ./HelloWorld/Dockerfile --context . -r $ACR_NAME"
-   az acr build -t helloworld$i:v1 --context . -r $ACR_NAME 
+   az acr build -t helloworld$i:v1 -f ./HelloWorld/Dockerfile --context . -r $ACR_NAME 
    echo "BuildTask$i Done!" 
   done
 # echo "+ az acr build -t helloworld1:v1 --context . -r $ACR_NAME"
