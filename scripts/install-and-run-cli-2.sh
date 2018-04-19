@@ -98,7 +98,7 @@ az acr login -n $ACR_NAME
 echo "---ACR Build Test---"
 pullbegin=$(date +%s%3N)
 PullStartTime=$(date +%H:%M:%S)
-for i in {1..1} 
+for i in {1..100} 
   do    
    echo "+ az acr build -t helloworld$i:v1 --context . -r $ACR_NAME"
    az acr build -t helloworld$i:v1 --context . -r $ACR_NAME 
@@ -110,8 +110,8 @@ for i in {1..1}
 pullend=$(date +%s%3N)
 PullEndTime=$(date +%H:%M:%S)
 pulltime=$((pullend-pullbegin))
-echo machineName,starttime,endtime,pulltime:$machineName,$PullStartTime,$PullEndTime,$pulltime >> /mnt/azurefiles/$today/Scenario1-500/acr-buid-output-time.log
+echo machineName,starttime,endtime,buildtime:$machineName,$PullStartTime,$PullEndTime,$pulltime >> /mnt/azurefiles/$today/Scenario1-500/acr-build-output-time.log
 
 }
 
-loadTest >> /mnt/azurefiles/$today/Scenario1-500/$machineName$currenttime/acr-buid-output.log
+loadTest >> /mnt/azurefiles/$today/Scenario1-500/$machineName$currenttime/acr-build-output.log
