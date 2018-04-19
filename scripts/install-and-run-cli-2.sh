@@ -23,7 +23,6 @@ done
 if [ -z $docker_image ]; then
     docker_image="azuresdk/azure-cli-python:latest"
 fi
-
 if [ -z $script_file ]; then
     script_file="writeblob.sh"
 fi
@@ -76,7 +75,7 @@ sudo mkdir /mnt/azurefiles/$today/Scenario1-500/$machineName$currenttime
 
 function loadTest()
 {
-ACR_NAME="ACRLoadTestBuildCR500eus2euap3"
+ACR_NAME="ACRLoadTestBuildCR500eus2euap4"
 #sudo git clone https://github.com/SteveLasker/node-helloworld.git
 #cd node-helloworld
 sudo git clone https://github.com/SteveLasker/aspnetcore-helloworld.git
