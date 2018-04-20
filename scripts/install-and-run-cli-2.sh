@@ -41,7 +41,8 @@ done
 #Install Azure CLI
 sudo apt-get -y update
 sudo apt-get -y install linux-image-extra-$(uname -r) linux-image-extra-virtual
-sudo apt-get -y updatesudo apt-get -y install apt-transport-https ca-certificates curl software-properties-common
+sudo apt-get -y update
+sudo apt-get -y install apt-transport-https ca-certificates curl software-properties-common
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 sudo apt-get -y update
@@ -74,7 +75,7 @@ sudo mkdir /mnt/azurefiles/$today/Scenario1-500/$machineName$currenttime
 
 function loadTest()
 {
-ACR_NAME="ACRLoadTestBuildCR500eus2euap4"
+ACR_NAME="ACRLoadTestBuildCR500eus2euap5"
 #sudo git clone https://github.com/SteveLasker/node-helloworld.git
 #cd node-helloworld
 sudo git clone https://github.com/SteveLasker/aspnetcore-helloworld.git
