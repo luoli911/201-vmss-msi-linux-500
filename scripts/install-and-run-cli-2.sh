@@ -75,7 +75,7 @@ sudo mkdir /mnt/azurefiles/$today/Scenario1-500/$machineName$currenttime
 
 function loadTest()
 {
-ACR_NAME="ACRLoadTestBuildCR500eus2euap5"
+ACR_NAME="ACRLoadTestBuildCR500eus2euapNew"
 #sudo git clone https://github.com/SteveLasker/node-helloworld.git
 #cd node-helloworld
 sudo git clone https://github.com/SteveLasker/aspnetcore-helloworld.git
