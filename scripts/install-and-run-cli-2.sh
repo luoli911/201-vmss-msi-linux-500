@@ -75,11 +75,13 @@ sudo mkdir /mnt/azurefiles/$today/Scenario1-500/$machineName$currenttime
 
 function loadTest()
 {
-ACR_NAME="ACRLoadTestBuildCR500eus2euapNew"
-#sudo git clone https://github.com/SteveLasker/node-helloworld.git
-#cd node-helloworld
-sudo git clone https://github.com/SteveLasker/aspnetcore-helloworld.git
-cd aspnetcore-helloworld
+ACR_NAME="ACRLoadTestBuildCR500eus2euap6"
+
+#sudo git clone https://github.com/SteveLasker/aspnetcore-helloworld.git
+#cd aspnetcore-helloworld
+git clone https://github.com/docker/distribution.git
+cd distribution
+
 echo "+ az login -u azcrci@microsoft.com -p $password"
 az login -u azcrci@microsoft.com -p $password
 
@@ -100,8 +102,8 @@ pullbegin=$(date +%s%3N)
 PullStartTime=$(date +%H:%M:%S)
 for i in {1..100} 
   do    
-   echo "+ az acr build -t helloworld$i:v1  -f ./HelloWorld/Dockerfile --context . -r $ACR_NAME"
-   az acr build -t helloworld$i:v1 -f ./HelloWorld/Dockerfile --context . -r $ACR_NAME 
+   echo "+ az acr build -t distribution$i:v1  -f ./Dockerfile --context . -r $ACR_NAME"
+   az acr build -t distribution$i:v1 -f ./Dockerfile --context . -r $ACR_NAME 
    echo "BuildTask$i Done!" 
   done
 # echo "+ az acr build -t helloworld1:v1 --context . -r $ACR_NAME"
